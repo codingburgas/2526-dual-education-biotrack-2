@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Pro Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER (Task 3) ===================== -->
+  <header class="app-header">
+    <div class="app-header-content">
+      <h1>Fitness Pro</h1>
+      <nav class="nav-menu">
+        <ul class="active">
+          <li><a class="active" href="#progress-overview">Daily Stats</a></li>
+          <li><a href="#workouts">Workouts</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#videos">Tutorials</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger-menu" aria-label="Toggle Menu">&#9776;</button>
+      <img
+        class="profile-pic"
+        src="https://www.educative.io/udata/project/W5DG6VDyXv6/user_1.svg"
+        alt="User Profile"
+      />
+    </div>
+  </header>
+
+  <!-- ===================== BANNER (Task 2) ===================== -->
+  <section class="banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Welcome to Fitness Pro</h1>
+      <p>Your ultimate companion for tracking your fitness journey.</p>
+      <button class="cta-button">Get Started</button>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESS OVERVIEW (Task 5) ===================== -->
+  <section class="progress-overview" id="progress-overview">
+    <h2>Daily Progress</h2>
+    <div class="progress-overview-content" id="progress-overview-content">
+
+      <div class="progress-card">
+        <h3>Steps</h3>
+        <div class="progress-circle" data-progress="75" style="--progress: 0%;"></div>
+        <p>7,500 / 10,000 steps</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>Calories</h3>
+        <div class="progress-circle" data-progress="60" style="--progress: 0%;"></div>
+        <p>1,200 / 2,000 kcal</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>Workout</h3>
+        <div class="progress-circle" data-progress="40" style="--progress: 0%;"></div>
+        <p>2 / 5 workouts</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== WORKOUTS (Task 6) ===================== -->
+  <section class="workout-tracker" id="workouts">
+    <h2>Workouts</h2>
+
+    <!-- Filter buttons (JS-powered) -->
+    <div class="workout-filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+      <button class="filter-btn" data-filter="missed">Missed</button>
+    </div>
+
+    <div class="workout-grid">
+      <div class="workout-card completed">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/DDy4LowDDzY/Baseball_player.svg" alt="Sports" />
+        </div>
+        <p>Sports</p>
+      </div>
+      <div class="workout-card upcoming">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/w6XezL6xro2/boy_sprinting.svg" alt="Running" />
+        </div>
+        <p>Running</p>
+      </div>
+      <div class="workout-card missed">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/MvXMoRxaJ2X/effort.svg" alt="Weights" />
+        </div>
+        <p>Weights</p>
+      </div>
+      <div class="workout-card missed">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/XxrBxaLqnOW/Health.svg" alt="Yoga" />
+        </div>
+        <p>Yoga</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GOALS & ACHIEVEMENTS (Task 7) ===================== -->
+  <section class="goals-achievements" id="goals">
+    <h2>Goals &amp; Achievements</h2>
+    <div class="badge-container">
+
+      <div class="badge" data-condition="workouts" data-threshold="10">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/M2EgrWO0Ozw/goal.svg" alt="First 10 Workouts Badge" />
+        </div>
+        <p>First 10 Workouts</p>
+      </div>
+
+      <div class="badge" data-condition="miles" data-threshold="100">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/Wao52byZ95r/champion.svg" alt="100 Miles Badge" />
+        </div>
+        <p>Completed 100 Miles</p>
+      </div>
+
+      <div class="badge" data-condition="calories" data-threshold="10000">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/G4VBW82WDxd/cup.svg" alt="Calorie Burn Badge" />
+        </div>
+        <p>Burned 10,000 Calories</p>
+      </div>
+
+      <div class="badge" data-condition="streak" data-threshold="7">
+        <div class="img-container">
+          <img src="https://www.educative.io/udata/project/nPqk9WqgoD4/Achievement.svg" alt="Daily Streak Badge" />
+        </div>
+        <p>7-Day Streak</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO TUTORIALS (Task 8) ===================== -->
+  <section class="video-tutorials" id="videos">
+    <h2>Video Tutorials</h2>
+
+    <!-- Video selector buttons (JS-powered) -->
+    <div class="video-selector">
+      <button class="video-btn active" data-video="v7AYKMP6rOE" data-title="Morning Yoga">Morning Yoga</button>
+      <button class="video-btn" data-video="vc1E5CfRfos" data-title="Strength Training">Strength Training</button>
+      <button class="video-btn" data-video="ml6cT4AZdqI" data-title="HIIT Basics">HIIT Basics</button>
+    </div>
+
+    <div class="video-list" id="video-list">
+      <div class="video-card">
+        <iframe
+          id="main-video"
+          src="https://www.youtube.com/embed/v7AYKMP6rOE"
+          title="Morning Yoga"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <h4 id="video-title">Morning Yoga</h4>
+      </div>
+      <div class="video-card">
+        <iframe
+          src="https://www.youtube.com/embed/vc1E5CfRfos"
+          title="Strength Training"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <h4>Strength Training</h4>
+      </div>
+      <div class="video-card">
+        <iframe
+          src="https://www.youtube.com/embed/ml6cT4AZdqI"
+          title="HIIT Basics"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <h4>HIIT Basics</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER (Task 4) ===================== -->
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2024 Fitness Pro. All Rights Reserved.</p>
+      <div class="links">
+        <a href="#contact">Contact Us</a>
+        <a href="#privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
