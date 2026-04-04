@@ -1,7 +1,6 @@
 <h1 align="center">💪 BioTrack</h1>
 
 <div align="center">
-  <img id="logo" alt="logo" width="30%" src="BioTrack\BioTrack\assets\BioTrack logo.png">
   <br><br>
   <p><em>A smart fitness and health tracking platform for users and trainers</em></p>
 </div>
@@ -27,10 +26,17 @@ Built for both individuals and professionals, BioTrack promotes healthier lifest
 
 🧩 Used Technologies
 • Visual Studio Code
+<img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1280px-Visual_Studio_Code_1.35_icon.svg.png">
 • JavaScript
+<img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png">
 • HTML
+<img id="logo" alt="logo" width="30%" src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png">
 • CSS
-
+<img id="logo" alt="logo" width="30%" src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png">
+• Powerpoint
+<img id="logo" alt="logo" width="30%" src="[[ ](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png)](https://cdn.pixabay.com/photo/2021/12/13/06/33/powerpoint-6867647_1280.png)">
+• Word
+<img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png">
 👥 Contributors
 • Vsevolod Bolotov  
 • Sofia Chapkina  
@@ -40,7 +46,5 @@ Built for both individuals and professionals, BioTrack promotes healthier lifest
 • Clone the Repository
 git clone https://github.com/your-username/BioTrack.git
 
-
-1. Clone the Repository
 
 git clone https://github.com/your-username/BioTrack.git
