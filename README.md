@@ -6,6 +6,7 @@
 </div>
 
 📚 Table of Contents
+<br>
 • About the Project
 • Used Technologies
 • Contributors
@@ -13,10 +14,11 @@
 
 <a id="about-the-project"></a>
 🎯 About the Project
-
+<br>
 BioTrack is a modern, interactive fitness tracking platform designed to help users monitor their physical activity, nutrition, and overall wellness in real time.  
-
+<br>
 The platform allows users to:
+<br>
 • Track workouts, calories burned, and body metrics through intuitive dashboards.  
 • Set personalized fitness goals and follow progress with analytical charts.  
 • Connect with trainers who can assign routines, provide feedback, and analyze performance data.  
@@ -25,24 +27,39 @@ The platform allows users to:
 Built for both individuals and professionals, BioTrack promotes healthier lifestyles through data-driven insights and a user-friendly design tailored for sustainable improvement.
 
 🧩 Used Technologies
+<br>
 • Visual Studio Code
+<br>
 <img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1280px-Visual_Studio_Code_1.35_icon.svg.png">
+<br>
 • JavaScript
+<br>
 <img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png">
+<br>
 • HTML
+<br>
 <img id="logo" alt="logo" width="30%" src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png">
+<br>
 • CSS
+<br>
 <img id="logo" alt="logo" width="30%" src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png">
+<br>
 • Powerpoint
-<img id="logo" alt="logo" width="30%" src="[[ ](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png)](https://cdn.pixabay.com/photo/2021/12/13/06/33/powerpoint-6867647_1280.png)">
+<br>
+<img id="logo" alt="logo" width="30%" src="https://mailmeteor.com/logos/assets/PNG/Microsoft_Office_PowerPoint_Logo_512px.png">
+<br>
 • Word
+<br>
 <img id="logo" alt="logo" width="30%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png">
+<br>
 👥 Contributors
+<br>
 • Vsevolod Bolotov  
 • Sofia Chapkina  
 • Juliana Stoykova 
 
 📦 Download
+<br>
 • Clone the Repository
 git clone https://github.com/your-username/BioTrack.git
 
