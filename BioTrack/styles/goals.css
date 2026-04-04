@@ -1,0 +1,350 @@
+/* goals.css
+   Extra styles for the Goals page (goals.html).
+   Base styles (header, footer, badges) come from styles.css.
+*/
+
+
+/* ============================================================
+   PAGE HERO (shared across sub-pages)
+   ============================================================ */
+.page-hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+/* ============================================================
+   CURRENT STATS — four big number cards — CENTERED GRID
+   ============================================================ */
+.current-stats-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+}
+
+.current-stats-section h2 {
+  text-align: center;
+}
+
+/* Grid of four stat cards — centered with max-width */
+.current-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 1.25rem;
+  padding: 0 2rem;
+}
+
+@media (min-width: 900px) {
+  .current-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .current-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-display {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.stat-display:hover {
+  transform: translateY(-4px);
+}
+
+/* Big number */
+.stat-display-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+/* Label below the number */
+.stat-display-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   GOAL PROGRESS BARS SECTION
+   ============================================================ */
+.goal-progress-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 5rem;
+}
+
+.goal-progress-section h2 {
+  text-align: center;
+}
+
+/* Vertical list of goal rows */
+.goal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Single goal row */
+.goal-row {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+/* Top line: name on the left, "X / Y" on the right */
+.goal-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.goal-row-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.goal-row-nums {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Grey track behind the bar */
+.goal-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* Lime fill — width is set by JS */
+.goal-bar-fill {
+  height: 100%;
+  width: 0%;              /* JS animates this to the real percentage */
+  background: var(--accent);
+  border-radius: 50px;
+  transition: width 1s ease;
+}
+
+/* Completed goals get a full green bar */
+.goal-bar-fill.complete {
+  background: var(--color-completed);
+}
+
+
+/* ============================================================
+   GOAL SETTER FORM — create/edit custom goals
+   ============================================================ */
+.goal-setter-section {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 600px;
+  margin: 2rem auto 3rem;
+  padding: 2.5rem 2rem;
+}
+
+.goal-setter-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Form layout — centered column */
+.add-goal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* Label + input group */
+.add-goal-form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-goal-form .form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+/* Text and number inputs */
+.add-goal-form .form-group input[type="text"],
+.add-goal-form .form-group input[type="number"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.add-goal-form .form-group input[type="text"]:focus,
+.add-goal-form .form-group input[type="number"]:focus {
+  border-color: var(--accent);
+  background: rgba(200, 255, 62, 0.05);
+}
+
+.add-goal-form .form-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Submit button */
+.add-goal-form .cta-button {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 0.5rem;
+}
+
+/* Confirmation / error message */
+.add-goal-form .form-message {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 1.2rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.add-goal-form .form-message.error {
+  color: #ef4444;
+}
+
+
+/* ============================================================
+   CUSTOM GOALS LIST — Display user-created goals
+   ============================================================ */
+.custom-goals-list {
+  max-width: 600px;
+  margin: 2rem auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.custom-goal-card {
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-goal-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.delete-goal-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+.delete-goal-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.delete-goal-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .current-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
+
+  .goal-setter-section {
+    padding: 1.5rem 1.25rem;
+    margin: 1.5rem auto;
+  }
+
+  .goal-row {
+    padding: 1.25rem;
+  }
+}

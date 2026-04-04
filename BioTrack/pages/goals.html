@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goals — BioTrack</title>
+  <link rel="icon" type="image/x-icon" href="../assets/bioTrackLogo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Base styles -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="../styles/goals.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       HEADER
+       =================================================== -->
+  <header class="app-header">
+    <div class="app-header-content">
+
+      <a class="brand-link" href="../index.html">
+        <img src="../assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1>
+      </a>
+
+      <nav class="nav-menu" id="primary-nav">
+        <ul class="active">
+          <li><a href="../index.html#progress-overview">Dashboard</a></li>
+          <li><a href="workouts.html">Workouts</a></li>
+          <li><a class="active" href="goals.html">Goals</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger-menu" aria-label="Toggle Menu" aria-controls="primary-nav" aria-expanded="false" type="button">&#9776;</button>
+
+      <img
+        class="profile-pic"
+        src="../assets/profileLogo.png"
+        alt="User Profile"
+      />
+    </div>
+  </header>
+
+
+  <!-- ===================================================
+       PAGE HERO
+       =================================================== -->
+  <section class="page-hero">
+    <h1>Goals &amp; Achievements</h1>
+    <p>See how far you have come and what milestones are next.</p>
+  </section>
+
+
+  <!-- ===================================================
+       CURRENT STATS — shows the user's real numbers.
+       JS reads these values and compares them to thresholds.
+       =================================================== -->
+  <section class="current-stats-section">
+    <h2>Your Current Stats</h2>
+
+    <div class="current-stats-grid">
+
+      <!-- Each stat-display card shows label + value -->
+      <div class="stat-display">
+        <p class="stat-display-value" id="stat-workouts">12</p>
+        <p class="stat-display-label">Workouts Done</p>
+      </div>
+
+      <div class="stat-display">
+        <p class="stat-display-value" id="stat-miles">45</p>
+        <p class="stat-display-label">Miles Covered</p>
+      </div>
+
+      <div class="stat-display">
+        <p class="stat-display-value" id="stat-calories">11,500</p>
+        <p class="stat-display-label">Calories Burned</p>
+      </div>
+
+      <div class="stat-display">
+        <p class="stat-display-value" id="stat-streak">7</p>
+        <p class="stat-display-label">Day Streak</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       BADGES — same data-condition / data-threshold pattern
+       as index.html so the same JS logic works here too.
+       =================================================== -->
+  <br>
+  <section class="goals-achievements">
+    <h2>Achievements</h2>
+
+    <div class="badge-container">
+
+      <!-- Badge 1 — earned when workouts >= 10 -->
+      <div class="badge" data-condition="workouts" data-threshold="10">
+        <div class="img-container">
+          <img src="../assets/tenWorkoutsBadge.png" alt="First 10 Workouts" />
+        </div>
+        <p>First 10 Workouts</p>
+      </div>
+
+      <!-- Badge 2 — earned when miles >= 100 -->
+      <div class="badge" data-condition="miles" data-threshold="100">
+        <div class="img-container">
+          <img src="../assets/hunderedMilesBadge.png" alt="100 Miles" />
+        </div>
+        <p>Completed 100 Miles</p>
+      </div>
+
+      <!-- Badge 3 — earned when calories >= 10000 -->
+      <div class="badge" data-condition="calories" data-threshold="10000">
+        <div class="img-container">
+          <img src="../assets/burned10000CaloriesBadge.png" alt="10,000 Calories" />
+        </div>
+        <p>Burned 10,000 Calories</p>
+      </div>
+
+      <!-- Badge 4 — earned when streak >= 7 -->
+      <div class="badge" data-condition="streak" data-threshold="7">
+        <div class="img-container">
+          <img src="../assets/sevenDayStreakBadge.png" alt="7-Day Streak" />
+        </div>
+        <p>7-Day Streak</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       GOAL PROGRESS BARS
+       JS reads userStats and fills in the bar widths + text.
+       =================================================== -->
+  <!-- Goal Setter: create or edit custom goals; persisted to localStorage -->
+  <br>
+  <section class="goal-setter-section">
+    <h2>Set Custom Goals</h2>
+    <form id="goal-setter-form" class="add-goal-form">
+      <div class="form-group">
+        <label for="goal-key">Stat Key (e.g. workouts, miles, calories, streak)</label>
+        <input id="goal-key" name="key" type="text" placeholder="workouts" maxlength="30" required />
+      </div>
+      <div class="form-group">
+        <label for="goal-value">Target Value (number)</label>
+        <input id="goal-value" name="value" type="number" min="1" placeholder="20" required />
+      </div>
+      <button class="cta-button" type="submit">Save Goal</button>
+      <p class="form-message" id="goal-form-message"></p>
+    </form>
+  </section>
+  <section class="goal-progress-section">
+    <h2>Progress Towards Next Goals</h2>
+
+    <div class="goal-list" id="goal-list">
+      <!--
+        Each goal-row has:
+          data-stat      — which userStats key to read
+          data-goal      — the target number
+          data-label     — human-readable name
+        JS fills the bar width and the numbers.
+      -->
+
+      <div class="goal-row" data-stat="workouts" data-goal="20" data-label="Complete 20 Workouts">
+        <div class="goal-row-header">
+          <span class="goal-row-name">Complete 20 Workouts</span>
+          <span class="goal-row-nums" id="goal-nums-workouts">0 / 20</span>
+        </div>
+        <div class="goal-bar-track">
+          <div class="goal-bar-fill" id="goal-bar-workouts"></div>
+        </div>
+      </div>
+
+      <div class="goal-row" data-stat="miles" data-goal="100" data-label="Cover 100 Miles">
+        <div class="goal-row-header">
+          <span class="goal-row-name">Cover 100 Miles</span>
+          <span class="goal-row-nums" id="goal-nums-miles">0 / 100</span>
+        </div>
+        <div class="goal-bar-track">
+          <div class="goal-bar-fill" id="goal-bar-miles"></div>
+        </div>
+      </div>
+
+      <div class="goal-row" data-stat="calories" data-goal="15000" data-label="Burn 15,000 Calories">
+        <div class="goal-row-header">
+          <span class="goal-row-name">Burn 15,000 Calories</span>
+          <span class="goal-row-nums" id="goal-nums-calories">0 / 15000</span>
+        </div>
+        <div class="goal-bar-track">
+          <div class="goal-bar-fill" id="goal-bar-calories"></div>
+        </div>
+      </div>
+
+      <div class="goal-row" data-stat="streak" data-goal="14" data-label="Reach a 14-Day Streak">
+        <div class="goal-row-header">
+          <span class="goal-row-name">Reach a 14-Day Streak</span>
+          <span class="goal-row-nums" id="goal-nums-streak">0 / 14</span>
+        </div>
+        <div class="goal-bar-track">
+          <div class="goal-bar-fill" id="goal-bar-streak"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       FOOTER
+       =================================================== -->
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2026 BioTrack. All Rights Reserved.</p>
+      <div class="links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../scripts/goals.js"></script>
+
+</body>
+</html>

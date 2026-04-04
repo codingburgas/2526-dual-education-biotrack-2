@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorials — BioTrack</title>
+  <link rel="icon" type="image/x-icon" href="../assets/bioTrackLogo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Base styles -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="../styles/tutorials.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       HEADER
+       =================================================== -->
+  <header class="app-header">
+    <div class="app-header-content">
+
+      <a class="brand-link" href="../index.html">
+        <img src="../assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1>
+      </a>
+
+  <nav class="nav-menu" id="primary-nav">
+        <ul class="active">
+          <li><a href="../index.html#progress-overview">Dashboard</a></li>
+          <li><a href="workouts.html">Workouts</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a class="active" href="tutorials.html">Tutorials</a></li>
+        </ul>
+      </nav>
+
+  <button class="hamburger-menu" aria-label="Toggle Menu" aria-controls="primary-nav" aria-expanded="false" type="button">&#9776;</button>
+
+      <img
+        class="profile-pic"
+        src="../assets/profileLogo.png"
+        alt="User Profile"
+      />
+    </div>
+  </header>
+
+
+  <!-- ===================================================
+       PAGE HERO
+       =================================================== -->
+  <section class="page-hero">
+    <h1>Video Tutorials</h1>
+    <p>Learn new exercises and techniques from expert instructors.</p>
+  </section>
+
+
+  <!-- ===================================================
+       FEATURED PLAYER — large video at the top.
+       Clicking a card below swaps the src here via JS.
+       =================================================== -->
+  <section class="featured-player-section">
+    <h2>Now Playing</h2>
+
+    <div class="featured-player">
+      <!-- This iframe is swapped by tutorials.js when a card is clicked -->
+      <iframe
+        id="featured-iframe"
+        src="https://www.youtube.com/embed/v7AYKMP6rOE"
+        title="Featured video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Title of the currently playing video — updated by JS -->
+    <p class="featured-title" id="featured-title">Morning Yoga</p>
+  </section>
+
+
+  <!-- ===================================================
+       CATEGORY FILTER BUTTONS
+       Clicking a category shows only cards in that category.
+       =================================================== -->
+  <section class="tutorials-library">
+    <h2>Video Library</h2>
+
+    <div class="category-buttons">
+      <button class="cat-btn active" data-category="all">All</button>
+      <button class="cat-btn" data-category="yoga">Yoga</button>
+      <button class="cat-btn" data-category="strength">Strength</button>
+      <button class="cat-btn" data-category="hiit">HIIT</button>
+      <button class="cat-btn" data-category="cardio">Cardio</button>
+    </div>
+
+
+    <!-- ===================================================
+         VIDEO CARDS GRID
+         Each card has data-category so the filter knows
+         which ones to show or hide.
+         Clicking a card updates the featured player above.
+         =================================================== -->
+    <div class="tutorials-grid" id="tutorials-grid">
+
+      <!-- Yoga videos -->
+      <div class="tut-card" data-category="yoga" data-video="v7AYKMP6rOE" data-title="Morning Yoga">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/v7AYKMP6rOE/mqdefault.jpg" alt="Morning Yoga thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag yoga">Yoga</span>
+          <h4>Morning Yoga</h4>
+          <p>A gentle morning flow to start your day.</p>
+        </div>
+      </div>
+
+      <div class="tut-card" data-category="yoga" data-video="4pKly2JojMw" data-title="Relaxing Evening Yoga">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/4pKly2JojMw/mqdefault.jpg" alt="Evening Yoga thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag yoga">Yoga</span>
+          <h4>Relaxing Evening Yoga</h4>
+          <p>Wind down and stretch before sleep.</p>
+        </div>
+      </div>
+
+      <!-- Strength videos -->
+      <div class="tut-card" data-category="strength" data-video="vc1E5CfRfos" data-title="Strength Training">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/vc1E5CfRfos/mqdefault.jpg" alt="Strength Training thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag strength">Strength</span>
+          <h4>Strength Training</h4>
+          <p>Build muscle with compound movements.</p>
+        </div>
+      </div>
+
+      <div class="tut-card" data-category="strength" data-video="IODxDxX7oi4" data-title="Full Body Dumbbell Workout">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/IODxDxX7oi4/mqdefault.jpg" alt="Dumbbell Workout thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag strength">Strength</span>
+          <h4>Full Body Dumbbell Workout</h4>
+          <p>All you need is a pair of dumbbells.</p>
+        </div>
+      </div>
+
+      <!-- HIIT videos -->
+      <div class="tut-card" data-category="hiit" data-video="ml6cT4AZdqI" data-title="HIIT Basics">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/ml6cT4AZdqI/mqdefault.jpg" alt="HIIT Basics thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag hiit">HIIT</span>
+          <h4>HIIT Basics</h4>
+          <p>High intensity intervals for maximum burn.</p>
+        </div>
+      </div>
+
+      <div class="tut-card" data-category="hiit" data-video="TkaYafQ-XC4" data-title="20-Minute HIIT Blast">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/TkaYafQ-XC4/mqdefault.jpg" alt="HIIT Blast thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag hiit">HIIT</span>
+          <h4>20-Minute HIIT Blast</h4>
+          <p>Short but seriously effective session.</p>
+        </div>
+      </div>
+
+      <!-- Cardio videos -->
+      <div class="tut-card" data-category="cardio" data-video="2MoGxae-zyo" data-title="Beginner Cardio">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/2MoGxae-zyo/mqdefault.jpg" alt="Beginner Cardio thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag cardio">Cardio</span>
+          <h4>Beginner Cardio</h4>
+          <p>Low impact moves to get your heart pumping.</p>
+        </div>
+      </div>
+
+      <div class="tut-card" data-category="cardio" data-video="gC_L9qAHVJ8" data-title="Jump Rope Cardio">
+        <div class="tut-thumb">
+          <img src="https://img.youtube.com/vi/gC_L9qAHVJ8/mqdefault.jpg" alt="Jump Rope thumbnail" />
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="tut-info">
+          <span class="tut-category-tag cardio">Cardio</span>
+          <h4>Jump Rope Cardio</h4>
+          <p>Old-school cardio that never gets old.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       FOOTER
+       =================================================== -->
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2026 BioTrack. All Rights Reserved.</p>
+      <div class="links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../scripts/tutorials.js"></script>
+
+</body>
+</html>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BioTrack Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="assets/bioTrackLogo.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet — lives in the css/ folder -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
 
@@ -22,25 +23,28 @@
     <div class="app-header-content">
 
       <!-- Brand name -->
-      <h1>Fitness Pro</h1>
+      <a class="brand-link" href="index.html">
+        <img src="assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1> 
+      </a>
 
       <!-- Desktop navigation links -->
-      <nav class="nav-menu">
+      <nav class="nav-menu" id="primary-nav">
         <ul class="active">
-          <li><a class="active" href="#progress-overview">Daily Stats</a></li>
-          <li><a href="#workouts">Workouts</a></li>
-          <li><a href="#goals">Goals</a></li>
-          <li><a href="#videos">Tutorials</a></li>
+          <li><a class="active" href="index.html">Dashboard</a></li>
+          <li><a href="pages/workouts.html">Workouts</a></li>
+          <li><a href="pages/goals.html">Goals</a></li>
+          <li><a href="pages/tutorials.html">Tutorials</a></li>
         </ul>
       </nav>
 
-      <!-- Hamburger button — visible only on mobile -->
-      <button class="hamburger-menu" aria-label="Toggle Menu">&#9776;</button>
+  <!-- Hamburger button — visible only on mobile -->
+  <button class="hamburger-menu" aria-label="Toggle Menu" aria-controls="primary-nav" aria-expanded="false" type="button">&#9776;</button>
 
       <!-- User profile picture -->
       <img
         class="profile-pic"
-        src="https://www.educative.io/udata/project/W5DG6VDyXv6/user_1.svg"
+        src="assets/profileLogo.png"
         alt="User Profile"
       />
 
@@ -59,10 +63,11 @@
     <div class="banner-content">
       <h1>Welcome to BioTrack</h1>
       <p>Your ultimate companion for tracking your fitness journey.</p>
-      <button class="cta-button">Get Started</button>
+  <button class="cta-button" type="button">Get Started</button>
     </div>
   </section>
 
+  <main id="main-content">
 
   <!-- ===================================================
        PROGRESS OVERVIEW (Task 5) — circular indicators
@@ -106,10 +111,10 @@
 
     <!-- Filter buttons — JS switches active state and hides/shows cards -->
     <div class="workout-filter-buttons">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="completed">Completed</button>
-      <button class="filter-btn" data-filter="upcoming">Upcoming</button>
-      <button class="filter-btn" data-filter="missed">Missed</button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true" type="button">All</button>
+      <button class="filter-btn" data-filter="completed" aria-pressed="false" type="button">Completed</button>
+      <button class="filter-btn" data-filter="upcoming" aria-pressed="false" type="button">Upcoming</button>
+      <button class="filter-btn" data-filter="missed" aria-pressed="false" type="button">Missed</button>
     </div>
 
     <!-- CSS Grid of workout cards; each has a status class -->
@@ -117,28 +122,28 @@
 
       <div class="workout-card completed">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/DDy4LowDDzY/Baseball_player.svg" alt="Sports" />
+          <img src="assets/sports.png" alt="Sports" />
         </div>
         <p>Sports</p>
       </div>
 
       <div class="workout-card upcoming">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/w6XezL6xro2/boy_sprinting.svg" alt="Running" />
+          <img src="assets/running.png" alt="Running" />
         </div>
         <p>Running</p>
       </div>
 
       <div class="workout-card missed">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/MvXMoRxaJ2X/effort.svg" alt="Weights" />
+          <img src="assets/weights.png" alt="Weights" />
         </div>
         <p>Weights</p>
       </div>
 
       <div class="workout-card missed">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/XxrBxaLqnOW/Health.svg" alt="Yoga" />
+          <img src="assets/yoga.png" alt="Yoga" />
         </div>
         <p>Yoga</p>
       </div>
@@ -163,28 +168,28 @@
 
       <div class="badge" data-condition="workouts" data-threshold="10">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/M2EgrWO0Ozw/goal.svg" alt="First 10 Workouts Badge" />
+          <img src="assets/tenWorkoutsBadge.png" alt="First 10 Workouts Badge" />
         </div>
         <p>First 10 Workouts</p>
       </div>
 
       <div class="badge" data-condition="miles" data-threshold="100">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/Wao52byZ95r/champion.svg" alt="100 Miles Badge" />
+          <img src="assets/hunderedMilesBadge.png" alt="100 Miles Badge" />
         </div>
         <p>Completed 100 Miles</p>
       </div>
 
       <div class="badge" data-condition="calories" data-threshold="10000">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/G4VBW82WDxd/cup.svg" alt="Calorie Burn Badge" />
+          <img src="assets/burned10000CaloriesBadge.png" alt="Calorie Burn Badge" />
         </div>
         <p>Burned 10,000 Calories</p>
       </div>
 
       <div class="badge" data-condition="streak" data-threshold="7">
         <div class="img-container">
-          <img src="https://www.educative.io/udata/project/nPqk9WqgoD4/Achievement.svg" alt="Daily Streak Badge" />
+          <img src="assets/sevenDayStreakBadge.png" alt="Daily Streak Badge" />
         </div>
         <p>7-Day Streak</p>
       </div>
@@ -201,9 +206,9 @@
 
     <!-- Selector buttons — JS swaps the first video iframe on click -->
     <div class="video-selector">
-      <button class="video-btn active" data-video="v7AYKMP6rOE" data-title="Morning Yoga">Morning Yoga</button>
-      <button class="video-btn" data-video="vc1E5CfRfos" data-title="Strength Training">Strength Training</button>
-      <button class="video-btn" data-video="ml6cT4AZdqI" data-title="HIIT Basics">HIIT Basics</button>
+      <button class="video-btn active" data-video="v7AYKMP6rOE" data-title="Morning Yoga" aria-pressed="true" type="button">Morning Yoga</button>
+      <button class="video-btn" data-video="vc1E5CfRfos" data-title="Strength Training" aria-pressed="false" type="button">Strength Training</button>
+      <button class="video-btn" data-video="ml6cT4AZdqI" data-title="HIIT Basics" aria-pressed="false" type="button">HIIT Basics</button>
     </div>
 
     <div class="video-list" id="video-list">
@@ -214,6 +219,7 @@
           id="main-video"
           src="https://www.youtube.com/embed/v7AYKMP6rOE"
           title="Morning Yoga"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
@@ -224,6 +230,7 @@
         <iframe
           src="https://www.youtube.com/embed/vc1E5CfRfos"
           title="Strength Training"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
@@ -234,6 +241,7 @@
         <iframe
           src="https://www.youtube.com/embed/ml6cT4AZdqI"
           title="HIIT Basics"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
@@ -242,23 +250,24 @@
 
     </div>
   </section>
-
-
   <!-- ===================================================
        FOOTER (Task 4) — links and copyright
        =================================================== -->
+  </main>
+
+
   <footer class="app-footer">
     <div class="app-footer-content">
-      <p>&copy; 2026 BioTrack. All Rights Reserved.</p>
+      <p>&copy; 2026 BioTrack Pro. All Rights Reserved.</p>
       <div class="links">
-        <a href="#contact">Contact Us</a>
-        <a href="#privacy">Privacy Policy</a>
+        <a href="pages/contact.html">Contact Us</a>
+        <a href="pages/privacy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
 
   <!-- Script — lives in the javascript/ folder -->
-  <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workouts — BioTrack</title>
+  <link rel="icon" type="image/x-icon" href="../assets/bioTrackLogo.png" />
+
+  <!-- Google Fonts (same as index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Base styles (shared with all pages) -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+
+  <!-- Page-specific styles (only for this page) -->
+  <link rel="stylesheet" href="../styles/workouts.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       HEADER — identical structure to index.html.
+       The only difference is the brand <h1> is wrapped in
+       an <a class="brand-link"> so it links back to the
+       dashboard. styles.css targets .brand-link to keep
+       the lime colour and margin-right: auto exactly the
+       same as the plain <h1> on index.html.
+       =================================================== -->
+  <header class="app-header">
+    <div class="app-header-content">
+
+      <!-- Brand — wrapped in a link, styled via .brand-link in styles.css -->
+      <a class="brand-link" href="../index.html">
+        <img src="../assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1>
+      </a>
+
+      <!-- Navigation — "Workouts" is active on this page -->
+      <nav class="nav-menu" id="primary-nav">
+        <ul class="active">
+          <li><a href="../index.html">Dashboard</a></li>
+          <li><a class="active" href="workouts.html">Workouts</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger button (shown on mobile, hidden on desktop) -->
+      <button
+        class="hamburger-menu"
+        aria-label="Toggle Menu"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+        type="button"
+      >&#9776;</button>
+
+      <!-- Profile picture -->
+      <img
+        class="profile-pic"
+        src="../assets/profileLogo.png"
+        alt="User Profile"
+      />
+
+    </div>
+  </header>
+
+
+  <!-- ===================================================
+       PAGE HERO — title + short description
+       =================================================== -->
+  <section class="page-hero">
+    <h1>My Workouts</h1>
+    <p>Track, filter and manage all your training sessions.</p>
+  </section>
+
+
+  <!-- ===================================================
+       SESSION TRACKER — interactive checklist
+       =================================================== -->
+  <section class="session-tool-section">
+    <h2>Session Tracker</h2>
+
+    <div class="session-checklist" id="session-checklist">
+      <label><input type="checkbox" data-name="Warm-up" /> Warm-up (5 min)</label>
+      <label><input type="checkbox" data-name="Main Set" /> Main Set</label>
+      <label><input type="checkbox" data-name="Cooldown" /> Cooldown</label>
+    </div>
+
+    <div class="session-controls">
+      <button class="cta-button" id="save-session" type="button">Save Session</button>
+      <button class="cta-button" id="clear-session" type="button">Clear</button>
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       WORKOUT STATS BAR — four quick-count numbers
+       JS fills these in from the workoutsData array.
+       =================================================== -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number" id="stat-completed">0</span>
+      <span class="stat-label">Completed</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" id="stat-upcoming">0</span>
+      <span class="stat-label">Upcoming</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" id="stat-missed">0</span>
+      <span class="stat-label">Missed</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" id="stat-total">0</span>
+      <span class="stat-label">Total</span>
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       FILTER + WORKOUT GRID
+       =================================================== -->
+  <section class="workouts-page-section">
+    <h2>All Workouts</h2>
+
+    <!-- Filter buttons -->
+    <div class="workout-filter-buttons">
+      <button class="filter-btn active" data-filter="all"       type="button" aria-pressed="true" >All</button>
+      <button class="filter-btn"        data-filter="completed" type="button" aria-pressed="false">Completed</button>
+      <button class="filter-btn"        data-filter="upcoming"  type="button" aria-pressed="false">Upcoming</button>
+      <button class="filter-btn"        data-filter="missed"    type="button" aria-pressed="false">Missed</button>
+    </div>
+
+    <!-- Cards are injected here by workouts.js -->
+    <div class="workout-grid" id="workout-grid"></div>
+  </section>
+
+
+  <!-- ===================================================
+       ADD WORKOUT FORM
+       =================================================== -->
+  <section class="add-workout-section">
+    <h2>Add New Workout</h2>
+
+    <div class="add-workout-form" id="add-workout-form">
+
+      <div class="form-group">
+        <label for="workout-name">Workout Name</label>
+        <input
+          type="text"
+          id="workout-name"
+          placeholder="e.g. Morning Run"
+          maxlength="30"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="workout-status">Status</label>
+        <select id="workout-status">
+          <option value="completed">Completed</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="missed">Missed</option>
+        </select>
+      </div>
+
+      <button class="cta-button" id="add-workout-btn" type="button">Add Workout</button>
+
+      <!-- Shown by JS after submit -->
+      <p class="form-message" id="form-message"></p>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       FOOTER
+       =================================================== -->
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2026 BioTrack. All Rights Reserved.</p>
+      <div class="links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../scripts/workouts.js"></script>
+
+</body>
+</html>

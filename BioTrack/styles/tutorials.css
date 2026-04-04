@@ -1,0 +1,245 @@
+/* tutorials.css
+   Extra styles for the Tutorials page (tutorials.html).
+   Base styles (header, footer) come from styles.css.
+*/
+
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.page-hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+/* ============================================================
+   FEATURED PLAYER — large iframe at the top
+   ============================================================ */
+.featured-player-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 2rem 2.5rem;
+}
+
+.featured-player-section h2 {
+  text-align: center;
+}
+
+/* Container keeps the iframe at 16:9 */
+.featured-player {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border);
+}
+
+.featured-player iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
+/* Title below the large player */
+.featured-title {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   VIDEO LIBRARY — category filter + grid of cards
+   ============================================================ */
+.tutorials-library {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 5rem;
+}
+
+.tutorials-library h2 {
+  text-align: center;
+}
+
+/* Category filter button row */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Each category button reuses the same look as .filter-btn in styles.css */
+.cat-btn {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cat-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cat-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0e1017;
+}
+
+/* Responsive grid of video cards */
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual video card */
+.tut-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.tut-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  border-color: var(--accent);
+}
+
+/* JS adds this when a card is clicked (currently playing) */
+.tut-card.playing {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* JS adds .hidden to cards that don't match the active category */
+.tut-card.hidden {
+  display: none;
+}
+
+/* Thumbnail wrapper — has a play icon overlay */
+.tut-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.tut-thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.tut-card:hover .tut-thumb img {
+  transform: scale(1.04); /* subtle zoom on hover */
+}
+
+/* Play icon centred on the thumbnail */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  pointer-events: none; /* so clicks pass through to the card */
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+.tut-card:hover .play-icon {
+  opacity: 1; /* only show on hover */
+}
+
+/* Text area below the thumbnail */
+.tut-info {
+  padding: 1rem 1.2rem;
+}
+
+.tut-info h4 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+}
+
+.tut-info p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Coloured category tag (e.g. "Yoga", "HIIT") */
+.tut-category-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+/* Per-category tag colours */
+.tut-category-tag.yoga     { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.tut-category-tag.strength { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.tut-category-tag.hiit     { background: rgba(239, 68, 68, 0.15);  color: #f87171; }
+.tut-category-tag.cardio   { background: rgba(34, 197, 94, 0.15);  color: #4ade80; }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .featured-player-section {
+    padding: 1rem 1.25rem 2rem;
+  }
+
+  .tutorials-library {
+    padding: 1rem 1.25rem 4rem;
+  }
+
+  .tutorials-grid {
+    grid-template-columns: 1fr;
+  }
+}

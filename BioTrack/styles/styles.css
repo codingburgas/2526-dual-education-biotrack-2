@@ -1,5 +1,5 @@
 /* styles.css
-   Fitness Pro Dashboard — BioTrack project
+   BioTrack Dashboard
    ==========================================
    Theme  : Dark athletic — deep navy + electric lime accent
    Fonts  : Bebas Neue (headings) + Barlow (body text)
@@ -27,6 +27,7 @@
   /* Misc */
   --border:        rgba(255, 255, 255, 0.07);
   --shadow:        0 8px 32px rgba(0, 0, 0, 0.45);
+  --focus:         #ffd54d; /* accessible focus ring */
   --radius:        16px;
   --header-h:      70px;
 }
@@ -42,10 +43,9 @@
 }
 
 html {
-  scroll-behavior: smooth; /* smooth scrolling for anchor links */
+  scroll-behavior: smooth;
 }
 
-/* Body — applies font and background to the whole page */
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
@@ -54,7 +54,6 @@ body {
   line-height: 1.6;
 }
 
-/* Headings use the display font */
 h1, h2, h3 {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.06em;
@@ -81,6 +80,27 @@ img {
   display: block;
 }
 
+#logo {
+  width: 34px;
+  height: 34px;
+  margin-right: 0.6rem;
+}
+
+/* Utility: hide from layout */
+.hidden {
+  display: none !important;
+}
+
+/* Keyboard focus styles */
+:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Shared section wrapper */
 section {
   max-width: 1200px;
@@ -90,16 +110,16 @@ section {
 
 
 /* ============================================================
-   3. HEADER  (Task 3)
+   3. HEADER
       Sticky top bar with logo, navigation, hamburger, avatar.
    ============================================================ */
 .app-header {
-  position: sticky;           /* stays at top while scrolling */
+  position: sticky;
   top: 0;
   z-index: 1000;
   height: var(--header-h);
   background-color: rgba(14, 16, 23, 0.92);
-  backdrop-filter: blur(12px);          /* frosted glass effect */
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -115,12 +135,36 @@ section {
   gap: 2rem;
 }
 
-/* Brand name */
+/*
+  Brand name — works whether the h1 is a direct child (index.html)
+  OR wrapped in an <a> tag (sub-pages like workouts.html).
+
+  We style BOTH the direct h1 AND the anchor wrapper + its h1
+  so the header always looks identical across every page.
+*/
+
+/* Case 1: <h1> is a direct child of .app-header-content (index.html) */
 .app-header-content > h1 {
   font-size: 1.8rem;
   color: var(--accent);
   letter-spacing: 0.12em;
   margin-right: auto; /* pushes nav and icons to the right */
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Case 2: <a><h1> — sub-pages wrap the brand in a link */
+.app-header-content > a.brand-link {
+  margin-right: auto; /* the anchor itself gets the push */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.app-header-content > a.brand-link h1 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Nav link list */
@@ -149,7 +193,7 @@ section {
 
 /* Hamburger button — hidden on desktop, shown on mobile */
 .hamburger-menu {
-  display: none;         /* hidden by default */
+  display: none;
   background: none;
   border: none;
   color: var(--text-main);
@@ -176,18 +220,22 @@ section {
 
 /* --- Mobile header --- */
 @media (max-width: 768px) {
-  /* Show hamburger */
   .hamburger-menu {
     display: block;
     margin-left: auto;
   }
 
-  /* Brand no longer pushes things right (hamburger does) */
+  /* Remove auto margin from both brand variants on mobile
+     (the hamburger now pushes right instead) */
   .app-header-content > h1 {
     margin-right: 0;
   }
 
-  /* Nav slides down from under the header when .open is added by JS */
+  .app-header-content > a.brand-link {
+    margin-right: 0;
+  }
+
+  /* Nav slides down when JS adds .open */
   .nav-menu {
     position: absolute;
     top: var(--header-h);
@@ -195,13 +243,13 @@ section {
     width: 100%;
     background-color: rgba(14, 16, 23, 0.98);
     border-bottom: 1px solid var(--border);
-    max-height: 0;           /* collapsed by default */
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
   }
 
   .nav-menu.open {
-    max-height: 300px;       /* expanded when JS adds .open */
+    max-height: 300px;
   }
 
   .nav-menu ul {
@@ -218,8 +266,7 @@ section {
 
 
 /* ============================================================
-   4. BANNER  (Task 2)
-      Full-width hero with background image, dark overlay, CTA.
+   4. BANNER
    ============================================================ */
 .banner {
   position: relative;
@@ -229,24 +276,17 @@ section {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-
-  /* Fallback colour if the image does not load */
   background-color: #111827;
-
-  /* Background image — centred and covering the whole area */
-  background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&auto=format&fit=crop');
+  background-image: url('../assets/gymBanner.png');
   background-size: cover;
   background-position: center;
-
-  /* Override the shared section max-width so the banner is full-width */
   max-width: 100%;
   padding: 0;
 }
 
-/* Semi-transparent dark layer over the image */
 .banner-overlay {
   position: absolute;
-  inset: 0;    /* shorthand for top/right/bottom/left: 0 */
+  inset: 0;
   background: linear-gradient(
     135deg,
     rgba(10, 12, 20, 0.82) 0%,
@@ -255,7 +295,6 @@ section {
   z-index: 1;
 }
 
-/* Text sits above the overlay */
 .banner-content {
   position: relative;
   z-index: 2;
@@ -264,7 +303,7 @@ section {
 }
 
 .banner-content h1 {
-  font-size: clamp(2.8rem, 8vw, 5.5rem); /* scales with viewport */
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
   color: #ffffff;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
   margin-bottom: 1rem;
@@ -277,7 +316,6 @@ section {
   margin-bottom: 2rem;
 }
 
-/* Call-to-action button */
 .cta-button {
   display: inline-block;
   background: var(--accent);
@@ -307,8 +345,7 @@ section {
 
 
 /* ============================================================
-   5. PROGRESS OVERVIEW  (Task 5)
-      Three circular progress indicators using conic-gradient.
+   5. PROGRESS OVERVIEW
    ============================================================ */
 .progress-overview {
   background: var(--bg-card);
@@ -322,7 +359,6 @@ section {
   text-align: center;
 }
 
-/* Flex row of three cards */
 .progress-overview-content {
   display: flex;
   flex-wrap: wrap;
@@ -335,7 +371,7 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  flex: 1 1 160px;   /* grow / shrink, min 160px wide */
+  flex: 1 1 160px;
   max-width: 200px;
 }
 
@@ -345,30 +381,23 @@ section {
   text-align: center;
 }
 
-/*
-  Circular indicator:
-    - conic-gradient fills from the top (starting at -90deg)
-    - --progress CSS variable is animated from 0% → target by JS
-    - ::after pseudo-element creates the hollow "donut" centre
-*/
 .progress-circle {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   background: conic-gradient(
     from -90deg,
-    var(--accent)       0%,
-    var(--accent)       var(--progress),   /* filled arc */
+    var(--accent)          0%,
+    var(--accent)          var(--progress),
     rgba(255,255,255,0.08) var(--progress),
-    rgba(255,255,255,0.08) 100%            /* empty arc */
+    rgba(255,255,255,0.08) 100%
   );
   position: relative;
   transition: background 0.3s;
 }
 
-/* Donut hole — shows the percentage number */
 .progress-circle::after {
-  content: attr(data-progress) '%';  /* reads data-progress attribute */
+  content: attr(data-progress) '%';
   position: absolute;
   inset: 14px;
   background: var(--bg-card);
@@ -384,8 +413,7 @@ section {
 
 
 /* ============================================================
-   6. WORKOUT TRACKER  (Task 6)
-      Filter buttons + CSS Grid of status-coded cards.
+   6. WORKOUT TRACKER
    ============================================================ */
 .workout-tracker {
   padding: 5rem 2rem;
@@ -395,7 +423,6 @@ section {
   text-align: center;
 }
 
-/* Filter button row */
 .workout-filter-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -424,7 +451,6 @@ section {
   color: var(--accent);
 }
 
-/* JS adds .active when a filter is selected */
 .filter-btn.active {
   background: var(--accent);
   border-color: var(--accent);
@@ -434,8 +460,24 @@ section {
 /* Responsive card grid */
 .workout-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  max-width: 1000px;
+  margin: 2rem auto;
   gap: 1.5rem;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1100px) {
+  .workout-grid { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 900px) {
+  .workout-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 700px) {
+  .workout-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 500px) {
+  .workout-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .workout-card {
@@ -452,12 +494,10 @@ section {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
 }
 
-/* JS adds .hidden to cards that don't match the active filter */
 .workout-card.hidden {
   display: none;
 }
 
-/* Card image area */
 .workout-card .img-container {
   background: rgba(255, 255, 255, 0.04);
   padding: 1.5rem;
@@ -473,7 +513,6 @@ section {
   object-fit: contain;
 }
 
-/* Card label row */
 .workout-card > p {
   padding: 1rem 1.2rem;
   font-weight: 600;
@@ -483,7 +522,6 @@ section {
   position: relative;
 }
 
-/* Coloured dot before the label — changes per status */
 .workout-card > p::before {
   content: '';
   display: inline-block;
@@ -494,7 +532,6 @@ section {
   vertical-align: middle;
 }
 
-/* Top border + dot colour per status class */
 .workout-card.completed { border-top: 3px solid var(--color-completed); }
 .workout-card.completed > p::before { background: var(--color-completed); }
 
@@ -506,8 +543,7 @@ section {
 
 
 /* ============================================================
-   7. GOALS & ACHIEVEMENTS  (Task 7)
-      Badge grid; locked badges are grey until JS unlocks them.
+   7. GOALS & ACHIEVEMENTS
    ============================================================ */
 .goals-achievements {
   background: var(--bg-card);
@@ -528,7 +564,6 @@ section {
   gap: 2rem;
 }
 
-/* Default badge state — locked (grey + faded) */
 .badge {
   display: flex;
   flex-direction: column;
@@ -539,7 +574,6 @@ section {
   transition: transform 0.25s, opacity 0.3s, filter 0.3s;
 }
 
-/* JS adds .achieved when the user has hit the threshold */
 .badge.achieved {
   opacity: 1;
   filter: none;
@@ -562,7 +596,6 @@ section {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Achieved badge gets a glowing lime ring */
 .badge.achieved .img-container {
   border-color: var(--accent);
   box-shadow: 0 0 20px rgba(200, 255, 62, 0.3);
@@ -590,8 +623,7 @@ section {
 
 
 /* ============================================================
-   8. VIDEO TUTORIALS  (Task 8)
-      Selector buttons + three embedded YouTube iframes.
+   8. VIDEO TUTORIALS
    ============================================================ */
 .video-tutorials {
   padding: 5rem 2rem;
@@ -601,7 +633,6 @@ section {
   text-align: center;
 }
 
-/* Video selector button row */
 .video-selector {
   display: flex;
   flex-wrap: wrap;
@@ -636,7 +667,6 @@ section {
   color: #0e1017;
 }
 
-/* Three-column responsive grid for the video cards */
 .video-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -657,7 +687,6 @@ section {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
 }
 
-/* iframe fills its card and keeps 16:9 ratio */
 .video-card iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -676,7 +705,7 @@ section {
 
 
 /* ============================================================
-   9. FOOTER  (Task 4)
+   9. FOOTER
    ============================================================ */
 .app-footer {
   background: var(--bg-card);
@@ -684,7 +713,6 @@ section {
   padding: 2rem;
 }
 
-/* Flexbox row: copyright on left, links on right */
 .app-footer-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -718,8 +746,7 @@ section {
 
 
 /* ============================================================
-   10. RESPONSIVE ADJUSTMENTS
-       Small-screen tweaks for sections and grids.
+   10. RESPONSIVE
    ============================================================ */
 @media (max-width: 600px) {
   section {
@@ -731,17 +758,10 @@ section {
     padding: 2.5rem 1.25rem;
   }
 
-  /* Two columns instead of four on tiny screens */
-  .workout-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Stack videos vertically */
   .video-list {
     grid-template-columns: 1fr;
   }
 
-  /* Centre-align footer on mobile */
   .app-footer-content {
     flex-direction: column;
     text-align: center;
