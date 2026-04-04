@@ -4,17 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fitness Pro Dashboard</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet — lives in the css/ folder -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ===================== HEADER (Task 3) ===================== -->
+  <!-- ===================================================
+       HEADER (Task 3) — sticky nav + hamburger + profile
+       =================================================== -->
   <header class="app-header">
     <div class="app-header-content">
+
+      <!-- Brand name -->
       <h1>Fitness Pro</h1>
+
+      <!-- Desktop navigation links -->
       <nav class="nav-menu">
         <ul class="active">
           <li><a class="active" href="#progress-overview">Daily Stats</a></li>
@@ -23,18 +33,29 @@
           <li><a href="#videos">Tutorials</a></li>
         </ul>
       </nav>
+
+      <!-- Hamburger button — visible only on mobile -->
       <button class="hamburger-menu" aria-label="Toggle Menu">&#9776;</button>
+
+      <!-- User profile picture -->
       <img
         class="profile-pic"
         src="https://www.educative.io/udata/project/W5DG6VDyXv6/user_1.svg"
         alt="User Profile"
       />
+
     </div>
   </header>
 
-  <!-- ===================== BANNER (Task 2) ===================== -->
+
+  <!-- ===================================================
+       BANNER (Task 2) — hero section with CTA button
+       =================================================== -->
   <section class="banner">
+    <!-- Dark overlay on top of the background image -->
     <div class="banner-overlay"></div>
+
+    <!-- Centred text content -->
     <div class="banner-content">
       <h1>Welcome to Fitness Pro</h1>
       <p>Your ultimate companion for tracking your fitness journey.</p>
@@ -42,23 +63,31 @@
     </div>
   </section>
 
-  <!-- ===================== PROGRESS OVERVIEW (Task 5) ===================== -->
+
+  <!-- ===================================================
+       PROGRESS OVERVIEW (Task 5) — circular indicators
+       =================================================== -->
   <section class="progress-overview" id="progress-overview">
     <h2>Daily Progress</h2>
+
     <div class="progress-overview-content" id="progress-overview-content">
 
+      <!-- Steps card -->
       <div class="progress-card">
         <h3>Steps</h3>
+        <!-- data-progress = target % ; --progress starts at 0 and is animated by JS -->
         <div class="progress-circle" data-progress="75" style="--progress: 0%;"></div>
         <p>7,500 / 10,000 steps</p>
       </div>
 
+      <!-- Calories card -->
       <div class="progress-card">
         <h3>Calories</h3>
         <div class="progress-circle" data-progress="60" style="--progress: 0%;"></div>
         <p>1,200 / 2,000 kcal</p>
       </div>
 
+      <!-- Workouts card -->
       <div class="progress-card">
         <h3>Workout</h3>
         <div class="progress-circle" data-progress="40" style="--progress: 0%;"></div>
@@ -68,11 +97,14 @@
     </div>
   </section>
 
-  <!-- ===================== WORKOUTS (Task 6) ===================== -->
+
+  <!-- ===================================================
+       WORKOUTS (Task 6) — filterable workout cards
+       =================================================== -->
   <section class="workout-tracker" id="workouts">
     <h2>Workouts</h2>
 
-    <!-- Filter buttons (JS-powered) -->
+    <!-- Filter buttons — JS switches active state and hides/shows cards -->
     <div class="workout-filter-buttons">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="completed">Completed</button>
@@ -80,37 +112,53 @@
       <button class="filter-btn" data-filter="missed">Missed</button>
     </div>
 
+    <!-- CSS Grid of workout cards; each has a status class -->
     <div class="workout-grid">
+
       <div class="workout-card completed">
         <div class="img-container">
           <img src="https://www.educative.io/udata/project/DDy4LowDDzY/Baseball_player.svg" alt="Sports" />
         </div>
         <p>Sports</p>
       </div>
+
       <div class="workout-card upcoming">
         <div class="img-container">
           <img src="https://www.educative.io/udata/project/w6XezL6xro2/boy_sprinting.svg" alt="Running" />
         </div>
         <p>Running</p>
       </div>
+
       <div class="workout-card missed">
         <div class="img-container">
           <img src="https://www.educative.io/udata/project/MvXMoRxaJ2X/effort.svg" alt="Weights" />
         </div>
         <p>Weights</p>
       </div>
+
       <div class="workout-card missed">
         <div class="img-container">
           <img src="https://www.educative.io/udata/project/XxrBxaLqnOW/Health.svg" alt="Yoga" />
         </div>
         <p>Yoga</p>
       </div>
+
     </div>
   </section>
 
-  <!-- ===================== GOALS & ACHIEVEMENTS (Task 7) ===================== -->
+
+  <!-- ===================================================
+       GOALS & ACHIEVEMENTS (Task 7) — badge system
+       =================================================== -->
   <section class="goals-achievements" id="goals">
     <h2>Goals &amp; Achievements</h2>
+
+    <!--
+      Each badge has:
+        data-condition  — which userStats key to check
+        data-threshold  — minimum value needed to unlock
+      JS adds class "achieved" when the condition is met.
+    -->
     <div class="badge-container">
 
       <div class="badge" data-condition="workouts" data-threshold="10">
@@ -144,11 +192,14 @@
     </div>
   </section>
 
-  <!-- ===================== VIDEO TUTORIALS (Task 8) ===================== -->
+
+  <!-- ===================================================
+       VIDEO TUTORIALS (Task 8) — embedded YouTube videos
+       =================================================== -->
   <section class="video-tutorials" id="videos">
     <h2>Video Tutorials</h2>
 
-    <!-- Video selector buttons (JS-powered) -->
+    <!-- Selector buttons — JS swaps the first video iframe on click -->
     <div class="video-selector">
       <button class="video-btn active" data-video="v7AYKMP6rOE" data-title="Morning Yoga">Morning Yoga</button>
       <button class="video-btn" data-video="vc1E5CfRfos" data-title="Strength Training">Strength Training</button>
@@ -156,6 +207,8 @@
     </div>
 
     <div class="video-list" id="video-list">
+
+      <!-- First card is the "featured" one controlled by JS -->
       <div class="video-card">
         <iframe
           id="main-video"
@@ -166,6 +219,7 @@
         ></iframe>
         <h4 id="video-title">Morning Yoga</h4>
       </div>
+
       <div class="video-card">
         <iframe
           src="https://www.youtube.com/embed/vc1E5CfRfos"
@@ -175,6 +229,7 @@
         ></iframe>
         <h4>Strength Training</h4>
       </div>
+
       <div class="video-card">
         <iframe
           src="https://www.youtube.com/embed/ml6cT4AZdqI"
@@ -184,10 +239,14 @@
         ></iframe>
         <h4>HIIT Basics</h4>
       </div>
+
     </div>
   </section>
 
-  <!-- ===================== FOOTER (Task 4) ===================== -->
+
+  <!-- ===================================================
+       FOOTER (Task 4) — links and copyright
+       =================================================== -->
   <footer class="app-footer">
     <div class="app-footer-content">
       <p>&copy; 2024 Fitness Pro. All Rights Reserved.</p>
@@ -198,6 +257,8 @@
     </div>
   </footer>
 
+
+  <!-- Script — lives in the javascript/ folder -->
   <script src="script.js"></script>
 </body>
 </html>

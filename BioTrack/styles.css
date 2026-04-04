@@ -1,1 +1,753 @@
-/*styles.css*/
+/* styles.css
+   Fitness Pro Dashboard — BioTrack project
+   ==========================================
+   Theme  : Dark athletic — deep navy + electric lime accent
+   Fonts  : Bebas Neue (headings) + Barlow (body text)
+   Layout : Flexbox for nav/footer, CSS Grid for cards
+*/
+
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES (variables)
+      Change these to restyle the whole site at once.
+   ============================================================ */
+:root {
+  /* Colours */
+  --bg-main:       #0e1017;   /* page background */
+  --bg-card:       #181c2a;   /* card / section background */
+  --accent:        #c8ff3e;   /* lime-green highlight */
+  --text-main:     #e8eaf6;   /* primary text */
+  --text-muted:    #94a3b8;   /* secondary / muted text */
+
+  /* Workout status colours */
+  --color-completed: #22c55e; /* green */
+  --color-upcoming:  #3b82f6; /* blue  */
+  --color-missed:    #ef4444; /* red   */
+
+  /* Misc */
+  --border:        rgba(255, 255, 255, 0.07);
+  --shadow:        0 8px 32px rgba(0, 0, 0, 0.45);
+  --radius:        16px;
+  --header-h:      70px;
+}
+
+
+/* ============================================================
+   2. RESET & BASE STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling for anchor links */
+}
+
+/* Body — applies font and background to the whole page */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Headings use the display font */
+h1, h2, h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.8rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Shared section wrapper */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+
+/* ============================================================
+   3. HEADER  (Task 3)
+      Sticky top bar with logo, navigation, hamburger, avatar.
+   ============================================================ */
+.app-header {
+  position: sticky;           /* stays at top while scrolling */
+  top: 0;
+  z-index: 1000;
+  height: var(--header-h);
+  background-color: rgba(14, 16, 23, 0.92);
+  backdrop-filter: blur(12px);          /* frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Flexbox row: logo | nav | hamburger | avatar */
+.app-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Brand name */
+.app-header-content > h1 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-right: auto; /* pushes nav and icons to the right */
+}
+
+/* Nav link list */
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+}
+
+.nav-menu ul li a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+  color: var(--accent);
+  background: rgba(200, 255, 62, 0.08);
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.hamburger-menu {
+  display: none;         /* hidden by default */
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.hamburger-menu:hover {
+  background: var(--border);
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* --- Mobile header --- */
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger-menu {
+    display: block;
+    margin-left: auto;
+  }
+
+  /* Brand no longer pushes things right (hamburger does) */
+  .app-header-content > h1 {
+    margin-right: 0;
+  }
+
+  /* Nav slides down from under the header when .open is added by JS */
+  .nav-menu {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    width: 100%;
+    background-color: rgba(14, 16, 23, 0.98);
+    border-bottom: 1px solid var(--border);
+    max-height: 0;           /* collapsed by default */
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .nav-menu.open {
+    max-height: 300px;       /* expanded when JS adds .open */
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 0.5rem;
+  }
+
+  .nav-menu ul li a {
+    display: block;
+    padding: 0.65rem 1rem;
+  }
+}
+
+
+/* ============================================================
+   4. BANNER  (Task 2)
+      Full-width hero with background image, dark overlay, CTA.
+   ============================================================ */
+.banner {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+
+  /* Fallback colour if the image does not load */
+  background-color: #111827;
+
+  /* Background image — centred and covering the whole area */
+  background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+
+  /* Override the shared section max-width so the banner is full-width */
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Semi-transparent dark layer over the image */
+.banner-overlay {
+  position: absolute;
+  inset: 0;    /* shorthand for top/right/bottom/left: 0 */
+  background: linear-gradient(
+    135deg,
+    rgba(10, 12, 20, 0.82) 0%,
+    rgba(10, 20, 10, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* Text sits above the overlay */
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  padding: 3rem 2rem;
+}
+
+.banner-content h1 {
+  font-size: clamp(2.8rem, 8vw, 5.5rem); /* scales with viewport */
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.banner-content p {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+/* Call-to-action button */
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  color: #0e1017;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(200, 255, 62, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(200, 255, 62, 0.5);
+  background: #d8ff5a;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   5. PROGRESS OVERVIEW  (Task 5)
+      Three circular progress indicators using conic-gradient.
+   ============================================================ */
+.progress-overview {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3.5rem 2.5rem;
+  margin: 2rem auto;
+}
+
+.progress-overview h2 {
+  text-align: center;
+}
+
+/* Flex row of three cards */
+.progress-overview-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 160px;   /* grow / shrink, min 160px wide */
+  max-width: 200px;
+}
+
+.progress-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/*
+  Circular indicator:
+    - conic-gradient fills from the top (starting at -90deg)
+    - --progress CSS variable is animated from 0% → target by JS
+    - ::after pseudo-element creates the hollow "donut" centre
+*/
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from -90deg,
+    var(--accent)       0%,
+    var(--accent)       var(--progress),   /* filled arc */
+    rgba(255,255,255,0.08) var(--progress),
+    rgba(255,255,255,0.08) 100%            /* empty arc */
+  );
+  position: relative;
+  transition: background 0.3s;
+}
+
+/* Donut hole — shows the percentage number */
+.progress-circle::after {
+  content: attr(data-progress) '%';  /* reads data-progress attribute */
+  position: absolute;
+  inset: 14px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   6. WORKOUT TRACKER  (Task 6)
+      Filter buttons + CSS Grid of status-coded cards.
+   ============================================================ */
+.workout-tracker {
+  padding: 5rem 2rem;
+}
+
+.workout-tracker h2 {
+  text-align: center;
+}
+
+/* Filter button row */
+.workout-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* JS adds .active when a filter is selected */
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0e1017;
+}
+
+/* Responsive card grid */
+.workout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.workout-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.workout-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* JS adds .hidden to cards that don't match the active filter */
+.workout-card.hidden {
+  display: none;
+}
+
+/* Card image area */
+.workout-card .img-container {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+
+.workout-card .img-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* Card label row */
+.workout-card > p {
+  padding: 1rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* Coloured dot before the label — changes per status */
+.workout-card > p::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Top border + dot colour per status class */
+.workout-card.completed { border-top: 3px solid var(--color-completed); }
+.workout-card.completed > p::before { background: var(--color-completed); }
+
+.workout-card.upcoming  { border-top: 3px solid var(--color-upcoming);  }
+.workout-card.upcoming  > p::before { background: var(--color-upcoming);  }
+
+.workout-card.missed    { border-top: 3px solid var(--color-missed);    }
+.workout-card.missed    > p::before { background: var(--color-missed);    }
+
+
+/* ============================================================
+   7. GOALS & ACHIEVEMENTS  (Task 7)
+      Badge grid; locked badges are grey until JS unlocks them.
+   ============================================================ */
+.goals-achievements {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3.5rem 2.5rem;
+  margin: 2rem auto;
+}
+
+.goals-achievements h2 {
+  text-align: center;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Default badge state — locked (grey + faded) */
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  opacity: 0.4;
+  filter: grayscale(80%);
+  transition: transform 0.25s, opacity 0.3s, filter 0.3s;
+}
+
+/* JS adds .achieved when the user has hit the threshold */
+.badge.achieved {
+  opacity: 1;
+  filter: none;
+}
+
+.badge.achieved:hover {
+  transform: translateY(-6px);
+}
+
+.badge .img-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Achieved badge gets a glowing lime ring */
+.badge.achieved .img-container {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(200, 255, 62, 0.3);
+}
+
+.badge .img-container img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.badge > p {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 110px;
+}
+
+.badge.achieved > p {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   8. VIDEO TUTORIALS  (Task 8)
+      Selector buttons + three embedded YouTube iframes.
+   ============================================================ */
+.video-tutorials {
+  padding: 5rem 2rem;
+}
+
+.video-tutorials h2 {
+  text-align: center;
+}
+
+/* Video selector button row */
+.video-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.video-btn {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.video-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.video-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0e1017;
+}
+
+/* Three-column responsive grid for the video cards */
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+/* iframe fills its card and keeps 16:9 ratio */
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
+.video-card h4 {
+  padding: 1rem 1.25rem;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  border-top: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   9. FOOTER  (Task 4)
+   ============================================================ */
+.app-footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+}
+
+/* Flexbox row: copyright on left, links on right */
+.app-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-footer-content > p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.app-footer .links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.app-footer .links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.app-footer .links a:hover {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   10. RESPONSIVE ADJUSTMENTS
+       Small-screen tweaks for sections and grids.
+   ============================================================ */
+@media (max-width: 600px) {
+  section {
+    padding: 3rem 1.25rem;
+  }
+
+  .progress-overview,
+  .goals-achievements {
+    padding: 2.5rem 1.25rem;
+  }
+
+  /* Two columns instead of four on tiny screens */
+  .workout-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Stack videos vertically */
+  .video-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Centre-align footer on mobile */
+  .app-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .app-footer .links {
+    justify-content: center;
+  }
+}
