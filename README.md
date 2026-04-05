@@ -48,7 +48,6 @@ The project is built entirely with **HTML5**, **CSS3**, and **vanilla JavaScript
 
 <a id="project-structure"></a>
 ## 📁 Project Structure
-
 ```
 BioTrack/
 │
@@ -57,19 +56,27 @@ BioTrack/
 ├── pages/
 │   ├── workouts.html       ← Full workouts page with filter + add form
 │   ├── goals.html          ← Goals, badges, and progress bars
-│   └── tutorials.html      ← Video tutorial library with category filter
+│   ├── tutorials.html      ← Video tutorial library with category filter
+│   ├── contact.html        ← Contact form with info cards
+│   ├── privacy.html        ← Privacy policy document
+│   └── auth.html           ← Combined login and sign up page
 │
 ├── styles/
 │   ├── styles.css          ← Global styles (shared across all pages)
 │   ├── workouts.css        ← Styles specific to workouts.html
 │   ├── goals.css           ← Styles specific to goals.html
-│   └── tutorials.css       ← Styles specific to tutorials.html
+│   ├── tutorials.css       ← Styles specific to tutorials.html
+│   ├── contact.css         ← Styles specific to contact.html
+│   ├── privacy.css         ← Styles specific to privacy.html
+│   └── auth.css            ← Styles specific to auth.html
 │
 ├── scripts/
 │   ├── script.js           ← JavaScript for index.html
 │   ├── workouts.js         ← JavaScript for workouts.html
 │   ├── goals.js            ← JavaScript for goals.html
-│   └── tutorials.js        ← JavaScript for tutorials.html
+│   ├── tutorials.js        ← JavaScript for tutorials.html
+│   ├── contact.js          ← Form validation and submission for contact.html
+│   └── privacy.js          ← Scroll progress and section highlights for privacy.html
 │
 ├── assets/                 ← Images and icons
 │
