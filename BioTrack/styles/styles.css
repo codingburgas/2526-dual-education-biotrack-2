@@ -246,6 +246,7 @@ section {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
+    z-index: 999;
   }
 
   .nav-menu.open {

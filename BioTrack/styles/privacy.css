@@ -1,0 +1,150 @@
+/* privacy.css
+   Extra styles for the Privacy Policy page (privacy.html).
+   Base styles (header, footer) come from styles.css.
+*/
+
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.page-hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+/* ============================================================
+   PRIVACY POLICY CONTENT
+   ============================================================ */
+.privacy-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+/* Individual policy sections */
+.policy-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-section:last-child {
+  border-bottom: none;
+}
+
+/* Section headings */
+.policy-section h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* Paragraph styling */
+.policy-section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.policy-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* List styling */
+.policy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.policy-section ul li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+/* Custom bullet points */
+.policy-section ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Strong text styling */
+.policy-section strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Links in policy content */
+.policy-section a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.policy-section a:hover {
+  color: #d8ff5a;
+}
+
+/* Styled text for meta information */
+.policy-section .meta-info {
+  background: rgba(200, 255, 62, 0.08);
+  border-left: 4px solid var(--accent);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .privacy-content {
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  .policy-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .policy-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .policy-section p,
+  .policy-section ul li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .policy-section ul li {
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+}

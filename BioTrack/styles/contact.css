@@ -1,0 +1,265 @@
+/* contact.css
+   Extra styles for the Contact Us page (contact.html).
+   Base styles (header, footer) come from styles.css.
+*/
+
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.page-hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+/* ============================================================
+   CONTACT FORM SECTION
+   ============================================================ */
+.contact-form-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.contact-form-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-form-wrapper {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+}
+
+/* Form layout — centered column */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Label + input group */
+.contact-form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-form .form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+/* Text input fields */
+.contact-form .form-group input[type="text"],
+.contact-form .form-group input[type="email"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.contact-form .form-group input[type="text"]:focus,
+.contact-form .form-group input[type="email"]:focus {
+  border-color: var(--accent);
+  background: rgba(200, 255, 62, 0.05);
+}
+
+.contact-form .form-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Textarea styling */
+.contact-form .form-group-textarea textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .form-group-textarea textarea:focus {
+  border-color: var(--accent);
+  background: rgba(200, 255, 62, 0.05);
+}
+
+.contact-form .form-group-textarea textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Submit button */
+.contact-form .cta-button {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 0.5rem;
+}
+
+/* Confirmation message */
+.contact-form .form-message {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 1.2rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.contact-form .form-message.error {
+  color: #ef4444;
+}
+
+
+/* ============================================================
+   CONTACT INFO SECTION
+   ============================================================ */
+.contact-info-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.contact-info-section h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Grid of contact cards */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+@media (min-width: 900px) {
+  .contact-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual contact card */
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Card icon container */
+.contact-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card heading */
+.contact-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+}
+
+/* Card main content */
+.contact-card p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Card links */
+.contact-card a {
+  color: var(--accent);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.contact-card a:hover {
+  color: #d8ff5a;
+}
+
+/* Subtitle text in cards */
+.contact-card .card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem !important;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .contact-form-wrapper {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-form {
+    gap: 1.2rem;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .contact-info-section {
+    padding: 2rem 1.25rem;
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioTrack | Login</title>
+  <link rel="icon" type="image/x-icon" href="assets/bioTrackLogo.png" />
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+ 
+  <link rel="stylesheet" href="../styles/styles.css" />
+  <link rel="stylesheet" href="../styles/auth.css" />
+</head>
+<body>
+ 
+  <header class="app-header">
+    <div class="app-header-content">
+
+      <!-- Brand name -->
+      <a class="brand-link" href="../index.html">
+        <img src="../assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1> 
+      </a>
+
+      <!-- Desktop navigation links -->
+      <nav class="nav-menu" id="primary-nav">
+        <ul class="active">
+          <li><a class="active" href="../index.html">Dashboard</a></li>
+          <li><a href="../pages/workouts.html">Workouts</a></li>
+          <li><a href="../pages/goals.html">Goals</a></li>
+          <li><a href="../pages/tutorials.html">Tutorials</a></li>
+        </ul>
+      </nav>
+
+  <!-- Hamburger button — visible only on mobile -->
+  <button class="hamburger-menu" aria-label="Toggle Menu" aria-controls="primary-nav" aria-expanded="false" type="button">&#9776;</button>
+
+      <!-- User profile picture -->
+      <a href="auth.html">
+      <img
+        class="profile-pic"
+        src="../assets/profileLogo.png"
+        alt="User Profile"
+      />
+      </a>
+
+    </div>
+  </header>
+ 
+  <main class="auth-main">
+    <section class="auth-section" id="login-container">
+      <div class="auth-card">
+        <h2>Member Login</h2>
+        <p>Enter your credentials to access your dashboard.</p>
+ 
+        <form class="auth-form">
+          <div class="auth-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="email@example.com" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="cta-button">Sign In</button>
+        </form>
+ 
+        <div class="auth-footer">
+          <p>New to BioTrack? <a href="#" onclick="toggleAuth()">Create an account</a></p>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="auth-section hidden" id="register-container">
+      <div class="auth-card">
+        <h2>Create Account</h2>
+        <p>Join the BioTrack community today.</p>
+ 
+        <form class="auth-form">
+          <div class="auth-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe" required>
+          </div>
+          <div class="auth-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="email@example.com" required>
+          </div>
+          <div class="auth-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="cta-button">Register Now</button>
+        </form>
+ 
+        <div class="auth-footer">
+          <p>Already have an account? <a href="#" onclick="toggleAuth()">Back to Login</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+ 
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2026 BioTrack Pro. All Rights Reserved.</p>
+      <div class="links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="../scripts/script.js"></script>
+  <script>
+    function toggleAuth() {
+      document.getElementById('login-container').classList.toggle('hidden');
+      document.getElementById('register-container').classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

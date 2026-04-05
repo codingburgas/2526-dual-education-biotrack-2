@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — BioTrack</title>
+  <link rel="icon" type="image/x-icon" href="../assets/bioTrackLogo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Base styles -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="../styles/contact.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       HEADER
+       =================================================== -->
+  <header class="app-header">
+    <div class="app-header-content">
+
+      <a class="brand-link" href="../index.html">
+        <img src="../assets/bioTrackLogo.png" alt="BioTrack Logo" class="logo" id="logo"/>
+        <h1>BioTrack</h1>
+    </a>
+
+      <nav class="nav-menu" id="primary-nav">
+        <ul class="active">
+          <li><a href="../index.html#progress-overview">Dashboard</a></li>
+          <li><a href="workouts.html">Workouts</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger-menu" aria-label="Toggle Menu" aria-controls="primary-nav" aria-expanded="false" type="button">&#9776;</button>
+
+      <a href="auth.html">
+      <img
+        class="profile-pic"
+        src="../assets/profileLogo.png"
+        alt="User Profile"
+      />
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- ===================================================
+       PAGE HERO
+       =================================================== -->
+  <section class="page-hero">
+    <h1>Contact Us</h1>
+    <p>Get in touch with our support team. We'd love to hear from you.</p>
+  </section>
+
+
+  <!-- ===================================================
+       CONTACT FORM SECTION
+       =================================================== -->
+  <section class="contact-form-section">
+    <h2>Send us a Message</h2>
+
+    <div class="contact-form-wrapper">
+      <form class="contact-form" id="contact-form">
+
+        <!-- Name field -->
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            placeholder="John Doe"
+            maxlength="60"
+            required
+          />
+        </div>
+
+        <!-- Email field -->
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input
+            type="email"
+            id="contact-email"
+            name="email"
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+
+        <!-- Subject field -->
+        <div class="form-group">
+          <label for="contact-subject">Subject</label>
+          <input
+            type="text"
+            id="contact-subject"
+            name="subject"
+            placeholder="How can we help?"
+            maxlength="80"
+            required
+          />
+        </div>
+
+        <!-- Message field -->
+        <div class="form-group form-group-textarea">
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            placeholder="Tell us more about your inquiry..."
+            rows="6"
+            maxlength="500"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit button -->
+        <button class="cta-button" type="submit">Send Message</button>
+
+        <!-- Confirmation message -->
+        <p class="form-message" id="contact-form-message"></p>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       CONTACT INFO SECTION
+       =================================================== -->
+  <section class="contact-info-section">
+    <h2>Other Ways to Reach Us</h2>
+
+    <div class="contact-info-grid">
+
+      <!-- Email card -->
+      <div class="contact-card">
+        <div class="card-icon">
+          <span>✉</span>
+        </div>
+        <h3>Email</h3>
+        <p><a href="mailto:support@bioTrack.com">support@bioTrack.com</a></p>
+        <p class="card-subtitle">We'll respond within 24 hours</p>
+      </div>
+
+      <!-- Phone card -->
+      <div class="contact-card">
+        <div class="card-icon">
+          <span>📞</span>
+        </div>
+        <h3>Phone</h3>
+        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p class="card-subtitle">Mon–Fri, 9 AM–5 PM EST</p>
+      </div>
+
+      <!-- Address card -->
+      <div class="contact-card">
+        <div class="card-icon">
+          <span>📍</span>
+        </div>
+        <h3>Address</h3>
+        <p>123 Fitness Street<br />Burgas<br />Bulgaria</p>
+        <p class="card-subtitle">Visit our headquarters</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       FOOTER
+       =================================================== -->
+  <footer class="app-footer">
+    <div class="app-footer-content">
+      <p>&copy; 2026 BioTrack. All Rights Reserved.</p>
+      <div class="links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../scripts/contact.js"></script>
+
+</body>
+</html>
